@@ -168,7 +168,8 @@ def main():
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
-    app = ApplicationBuilder().token('7556390925:AAF-o7OJFMjKdYm5rbU63Sq6iAnWui-XY64').build()
+    import os
+app = ApplicationBuilder().token(os.getenv("TELEGRAM_BOT_TOKEN")).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
